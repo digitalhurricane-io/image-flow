@@ -12,6 +12,7 @@ using Imageflow.Server.Storage.S3;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.Extensions.NETCore.Setup;
+using System;
 
 namespace Imageflow.Server.ExampleDockerDiskCache
 {
@@ -46,7 +47,9 @@ namespace Imageflow.Server.ExampleDockerDiskCache
 
             services.AddImageflowHybridCache(new HybridCacheOptions(Path.Combine(Env.ContentRootPath, "imageflow_cache"))
             {
-                CacheSizeLimitInBytes = (long)1 * 1024 * 1024 * 1024 //1 GiB
+                // How long after a file is created before it can be deleted
+                MinAgeToDelete = TimeSpan.FromSeconds(60*60*48),
+                CacheSizeLimitInBytes = (long)5 * 1024 * 1024 * 1024 // 5 GiB
             });
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

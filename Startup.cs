@@ -72,6 +72,8 @@ namespace Imageflow.Server.ExampleDockerDiskCache
                 .SetMapWebRoot(true)
                 .MapPath("/images", Path.Combine(Env.ContentRootPath, "images"))
                 .SetAllowCaching(true)
+                // Cache publicly (including on shared proxies and CDNs) for 30 days
+                .SetDefaultCacheControlString("public, max-age=2592000")
                 .SetJobSecurityOptions(new SecurityOptions()
                     .SetMaxDecodeSize(new FrameSizeLimit(8000, 8000, 40))
                     .SetMaxFrameSize(new FrameSizeLimit(8000, 8000, 40))

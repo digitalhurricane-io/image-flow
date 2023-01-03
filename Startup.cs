@@ -41,6 +41,7 @@ namespace Imageflow.Server.ExampleDockerDiskCache
             // You can call AddImageflowS3Service multiple times for each unique access key
             services.AddImageflowS3Service(new S3ServiceOptions()
                 .MapPrefix("/prod/", "chido-prod")
+                .MapPrefix("/dev/", "chido-dev")
                 // .MapPrefix("/imageflow-resources/", RegionEndpoint.USWest2, "imageflow-resources")
                 // .MapPrefix("/custom-s3client/", () => new AmazonS3Client(), "custom-client", "", false, false)
             );

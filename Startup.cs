@@ -49,7 +49,7 @@ namespace Imageflow.Server.ExampleDockerDiskCache
             {
                 // How long after a file is created before it can be deleted
                 MinAgeToDelete = TimeSpan.FromSeconds(60*60*48),
-                CacheSizeLimitInBytes = (long)5 * 1024 * 1024 * 1024 // 5 GiB
+                CacheSizeLimitInBytes = (long)10 * 1024 * 1024 * 1024 // 10 GiB
             });
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
